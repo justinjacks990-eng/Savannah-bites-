@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savanna Bites | Fine African Dining</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>// ===== HAMBURGER MENU =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+navLinks.classList.toggle('active');
+});
+
+// ===== SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if(entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1 });
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+observer.observe(section);
+});
+
+// ===== NAVBAR SCROLL EFFECT =====
+window.addEventListener('scroll', () => {
+const navbar = document.getElementById('navbar');
+if(window.scrollY > 50) {
+navbar.style.background = 'rgba(26, 26, 26, 1)';
+navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.5)';
+} else {
+navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+navbar.style.boxShadow = 'none';
+}
+});
+<body>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            🌍 Savanna Bites
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-subtitle">Welcome to</p>
+        <h1 class="hero-title">Savanna Bites</h1>
+        <p class="hero-desc">Authentic African flavours crafted with passion, served with pride in the heart of Nairobi.</p>
+        <div class="hero-buttons">
+            <a href="#menu" class="btn-primary">View Our Menu</a>
+            <a href="#contact" class="btn-secondary">Reserve a Table</a>
+        </div>
+    </div>
+</section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600" 
+            alt="Savanna Bites Interior"/>
+            <div class="about-badge">
+                <span class="badge-number">10+</span>
+                <span class="badge-text">Years of Excellence</span>
+            </div>
+        </div>
+        <div class="about-text">
+            <p class="section-subtitle">Our Story</p>
+            <h2 class="section-title">More Than Just a Meal</h2>
+            <p class="about-desc">
+                Savanna Bites was born from a deep love for African cuisine and culture. 
+                Nestled in the heart of Nairobi, we bring together the rich flavours 
+                of East Africa with a modern dining experience.
+            </p>
+            <p class="about-desc">
+                Every dish tells a story — from our grandmother's secret spice blends 
+                to locally sourced fresh ingredients delivered daily from Kenyan farms.
+            </p>
+            <div class="about-stats">
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat">
+                    <h3>30+</h3>
+                    <p>Unique Dishes</p>
+                </div>
+                <div class="stat">
+                    <h3>5★</h3>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+            <a href="#menu" class="btn-primary">Explore Our Menu</a>
+        </div>
+    </div>
+</section>
+
+    <!-- MENU SECTION -->
+    <section id="menu">
+    <div class="menu-container">
+        <p class="section-subtitle">What We Offer</p>
+        <h2 class="section-title">Our Menu</h2>
+
+        <!-- MENU FILTER BUTTONS -->
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="starters">Starters</button>
+            <button class="filter-btn" data-filter="mains">Main Course</button>
+            <button class="filter-btn" data-filter="drinks">Drinks</button>
+        </div>
+
+        <!-- MENU GRID -->
+        <div class="menu-grid">
+
+            <div class="menu-card" data-category="starters">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400" alt="Starter"/>
+                <div class="menu-info">
+                    <div class="menu-top">
+                        <h3>Kenyan Samosa</h3>
+                        <span class="price">Ksh 350</span>
+                    </div>
+                    <p>Crispy pastry filled with spiced minced meat and vegetables</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="starters">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" alt="Starter"/>
+                <div class="menu-info">
+                    <div class="menu-top">
+                        <h3>Fresh Garden Salad</h3>
+                        <span class="price">Ksh 450</span>
+                    </div>
+                    <p>Farm fresh vegetables with our signature African dressing</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="mains">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Main"/>
+                <div class="menu-info">
+                    <div class="menu-top">
+                        <h3>Nyama Choma Platter</h3>
+                        <span class="price">Ksh 1,200</span>
+                    </div>
+                    <p>Slow roasted meat served with ugali and kachumbari</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="mains">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400" alt="Main"/>
+                <div class="menu-info">
+                    <div class="menu-top">
+                        <h3>Tilapia wa Kupaka</h3>
+                        <span class="price">Ksh 950</span>
+                    </div>
+                    <p>Grilled tilapia in rich coconut curry sauce with rice</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400" alt="Drink"/>
+                <div class="menu-info">
+                    <div class="menu-top">
+                        <h3>Dawa Cocktail</h3>
+                        <span class="price">Ksh 600</span>
+                    </div>
+                    <p>Kenya's famous honey lime vodka cocktail served chilled</p>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?w=400" alt="Drink"/>
+                <div class="menu-info">
+                    <div class="menu-top">
+                        <h3>Fresh Mango Juice</h3>
+                        <span class="price">Ksh 250</span>
+                    </div>
+                    <p>Freshly blended Kenyan mangoes served over ice</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- GALLERY SECTION -->
+ <section id="gallery">
+    <div class="gallery-container">
+        <p class="section-subtitle">Visual Feast</p>
+        <h2 class="section-title">Our Gallery</h2>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item large">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800" alt="Restaurant"/>
+                <div class="gallery-overlay">
+                    <p>Fine Dining Experience</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400" alt="Food"/>
+                <div class="gallery-overlay">
+                    <p>Signature Dishes</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400" alt="Food"/>
+                <div class="gallery-overlay">
+                    <p>Fresh Ingredients</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Food"/>
+                <div class="gallery-overlay">
+                    <p>Grilled Perfection</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="Interior"/>
+                <div class="gallery-overlay">
+                    <p>Cozy Ambiance</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+    <div class="contact-container">
+        <p class="section-subtitle">Get In Touch</p>
+        <h2 class="section-title">Reserve a Table</h2>
+
+        <div class="contact-wrapper">
+
+            <!-- LEFT: CONTACT INFO -->
+            <div class="contact-info">
+
+                <div class="info-card">
+                    <span class="info-icon">📍</span>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Kimathi Street, Nairobi CBD<br/>Kenya</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">📞</span>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+254 700 000 000</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">🕐</span>
+                    <div>
+                        <h4>Opening Hours</h4>
+                        <p>Mon - Sun: 8:00 AM - 11:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-icon">📧</span>
+                    <div>
+                        <h4>Email</h4>
+                        <p>hello@savannabites.co.ke</p>
+                    </div>
+                </div>
+
+                <!-- WHATSAPP BUTTON -->
+                <a href="https://wa.me/254700000000" 
+                target="_blank" class="whatsapp-btn">
+                    💬 Order on WhatsApp
+                </a>
+
+            </div>
+
+            <!-- RIGHT: RESERVATION FORM -->
+            <div class="contact-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Kamau"/>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+254 700 000 000"/>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date"/>
+                </div>
+                <div class="form-group">
+                    <label>Number of Guests</label>
+                    <input type="number" placeholder="2" min="1" max="20"/>
+                </div>
+                <div class="form-group">
+                    <label>Special Requests</label>
+                    <textarea placeholder="Any dietary requirements or special occasions?"></textarea>
+                </div>
+                <button class="submit-btn">Reserve My Table 🍽️</button>
+            </div>
+
+        </div>
+
+        <!-- GOOGLE MAPS -->
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8176935041!2d36.8172!3d-1.2833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d664b8c8b9%3A0x2a6e2e2e2e2e2e2e!2sNairobi%20CBD!5e0!3m2!1sen!2ske!4v1234567890"
+                width="100%"
+                height="300"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+    <div class="footer-container">
+
+        <!-- TOP FOOTER -->
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <div class="footer-logo">🌍 Savanna Bites</div>
+                <p>Authentic African flavours crafted with passion, served with pride in the heart of Nairobi.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">▶️</a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Our Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Opening Hours</h4>
+                <ul>
+                    <li>Monday - Friday</li>
+                    <li>8:00 AM - 11:00 PM</li>
+                    <li>Saturday - Sunday</li>
+                    <li>9:00 AM - 12:00 AM</li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 Kimathi Street, Nairobi</li>
+                    <li>📞 +254 700 000 000</li>
+                    <li>📧 hello@savannabites.co.ke</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM FOOTER -->
+        <div class="footer-bottom">
+            <p>© 2026 Savanna Bites. All rights reserved.</p>
+            <p>Designed with ❤️ by <span>Jack Justins
+            </span></p>
+        </div>
+
+    </div>
+</footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
